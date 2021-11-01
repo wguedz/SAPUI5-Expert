@@ -9,12 +9,12 @@
 				<Page id="page" title="{i18n>title}">
 					<content>
                         <mvc:XMLView viewName="logaligroup.sapui5.view.HelloPanel"/>
+                        <mvc:XMLView viewName="logaligroup.sapui5.view.InvoicesList"/>
                     </content>
 				</Page>
 			</pages>
 		</App>
 	</Shell>
-
 </mvc:View>
 
 
