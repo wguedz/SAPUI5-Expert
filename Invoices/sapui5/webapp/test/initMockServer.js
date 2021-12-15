@@ -1,18 +1,22 @@
+//ts-nocheck
 sap.ui.define([
-    "../localService/mockserver",
+    "../localService/mockServer",
     "sap/m/MessageBox"
-], function (mockserver, MessageBox) {
-    "use strict";
+],
+    /** 
+     * @param {types of sap.m.MessageBox} MessageBox  
+     */
+    function (mockServer, MessageBox) {
+        'use strict';
+        var aMockServers = [];
 
-    var aMockservers = [];
+        //initialize the mock server
+        aMockServers.push(mockServer.init());
 
-    // initialize the mock server
-    aMockservers.push(mockserver.init());
+        promise.all(aMockServers).catch(function (oError) {
+            MessageBox.error(oError.message);
+        }).finally(function () {
+            sap.ui.require(["module:/sap/ui/core/ComponentSupport"]);
+        });
 
-    Promise.all(aMockservers).catch(function (oError) {
-        MessageBox.error(oError.message);
-    }).finally(function () {
-        // initialize the embedded component on the HTML page
-        sap.ui.require(["sap/ui/core/ComponentSupport"]);
     });
-});
