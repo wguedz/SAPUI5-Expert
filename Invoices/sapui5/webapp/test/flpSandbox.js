@@ -39,8 +39,8 @@ sap.ui.define([
 							"tiles": [{
 								"tileType": "sap.ushell.ui.tile.StaticTile",
 								"properties": {
-									"title": "Invoices List",
-									"targetURL": "#InvoicesList-display"
+									"title": "Invoices list",
+									"targetURL": "#logaligroupsapui5-display"
 								}
 							}]
 						}]
@@ -51,11 +51,11 @@ sap.ui.define([
 				"adapter": {
 					"config": {
 						"inbounds": {
-							"InvoicesList-display": {
-								"semanticObject": "InvoicesList",
+							"logaligroupsapui5-display": {
+								"semanticObject": "logaligroupsapui5",
 								"action": "display",
-								"description": "Invoices List",
-								"title": "Invoices List",
+								"description": "Invoices list",
+								"title": "Invoices list",
 								"signature": {
 									"parameters": {}
 								},

@@ -5,19 +5,18 @@
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
-      "version": "1.0.0"
+      "version": "0.0.1"
     },
     "title": "{{appTitle}}",
     "description": "{{appDescription}}",
-    "resources": "resources.json",
-    "ach": "ach",
     "dataSources": {
       "mainService": {
         "uri": "/V2/Northwind/Northwind.svc/",
         "type": "OData",
         "settings": {
-          "odataVersion": "2.0",
-          "localUri": "localService/metadata.xml"
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
         }
       }
     }
@@ -25,7 +24,7 @@
   "sap.ui": {
     "technology": "UI5",
     "icons": {
-      "icon": "sap-icon://task",
+      "icon": "",
       "favIcon": "",
       "phone": "",
       "phone@2": "",
@@ -39,20 +38,11 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": false,
-    "rootView": {
-      "viewName": "logaligroup.sapui5.view.App",
-      "type": "XML",
-      "async": true,
-      "id": "App"
-    },
+    "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.95.0",
+      "minUI5Version": "1.97.0",
       "libs": {
-        "sap.ui.core": {},
-        "sap.m": {},
-        "sap.ui.layout": {},
-        "sap.f": {}
+        "sap.ui.core": {}
       }
     },
     "contentDensities": {
@@ -66,18 +56,10 @@
           "bundleName": "logaligroup.sapui5.i18n.i18n"
         }
       },
-      "invoices": {
-        "type": "sap.ui.model.json.JSONModel",
-        "uri": "invoices.json"
-      },
-      "northwind": {
+      "": {
         "dataSource": "mainService",
         "preload": true,
-        "settings": {
-          "defaultBindingMode": "TwoWay",
-          "defaultCountMode": "Inline",
-          "refreshAfterChange": false
-        }
+        "settings": {}
       }
     },
     "resources": {
@@ -115,6 +97,12 @@
           "viewName": "App"
         }
       }
+    },
+    "rootView": {
+      "viewName": "logaligroup.sapui5.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
     }
   }
 }

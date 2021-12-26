@@ -1,15 +1,15 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Wed Oct 13 2021 05:28:01 GMT+0000 (Coordinated Universal Time)|
+|**Generation Date and Time**<br>Fri Dec 17 2021 02:51:48 GMT+0000 (Coordinated Universal Time)|
 |**App Generator**<br>@sap/generator-fiori|
-|**App Generator Version**<br>1.3.6|
+|**App Generator Version**<br>1.4.5|
 |**Generation Platform**<br>SAP Business Application Studio|
 |**Floorplan Used**<br>simple|
-|**Service Type**<br>None|
-|**Service URL**<br>N/A
+|**Service Type**<br>SAP System (ABAP On Premise)|
+|**Service URL**<br>https://services.odata.org/V2/Northwind/Northwind.svc/
 |**Module Name**<br>sapui5|
-|**Application Title**<br>Invoices List|
+|**Application Title**<br>Invoices list|
 |**Namespace**<br>logaligroup|
 |**UI5 Theme**<br>sap_fiori_3|
 |**UI5 Version**<br>Latest|
@@ -19,7 +19,7 @@
 
 ## sapui5
 
-Invoices List
+Invoices list
 
 ### Starting the generated app
 

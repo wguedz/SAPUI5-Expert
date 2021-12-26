@@ -2,19 +2,15 @@
     controllerName="logaligroup.sapui5.controller.App"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
-    xmlns="sap.m" >
-	<Shell>
-		<App>
-			<pages>
-				<Page id="page" title="{i18n>title}">
-					<content>
-                        <mvc:XMLView viewName="logaligroup.sapui5.view.HelloPanel"/>
-                        <mvc:XMLView viewName="logaligroup.sapui5.view.InvoicesList"/>
-                    </content>
-				</Page>
-			</pages>
-		</App>
-	</Shell>
+    xmlns="sap.m"
+>
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}">
+                    <content />
+                </Page>
+            </pages>
+        </App>
+    </Shell>
 </mvc:View>
-
-
