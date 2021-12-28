@@ -1,18 +1,61 @@
-_schema-version: "3.2"
+_schema-version: '3.2'
 ID: Invoices
 version: 0.0.1
 modules:
-- name: invoices-approuter
-  type: approuter.nodejs
-  path: invoices-approuter
-  requires:
-  - name: Invoices_html_repo_runtime
-  parameters:
-    disk-quota: 256M
-    memory: 256M
+  - name: invoices-approuter
+    type: approuter.nodejs
+    path: invoices-approuter
+    requires:
+      - name: Invoices_html_repo_runtime
+      - name: dest_invoices
+        group: destinations
+        properties:
+          forwardAuthToken: false
+          name: ui5
+          url: 'https://ui5.sap.com'
+    parameters:
+      disk-quota: 256M
+      memory: 256M
+  - name: Invoices-app-content
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: Invoices-repo-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - artifacts:
+            - logaligroupsapui5.zip
+          name: logaligroupsapui5
+          target-path: resources/
+  - name: logaligroupsapui5
+    type: html5
+    path: sapui5
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm install
+        - 'npm run build:cf'
+      supported-platforms: []
 resources:
-- name: Invoices_html_repo_runtime
-  type: org.cloudfoundry.managed-service
-  parameters:
-    service: html5-apps-repo
-    service-plan: app-runtime
+  - name: Invoices_html_repo_runtime
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime
+  - name: Invoices-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-name: Invoices-html5-srv
+      service-plan: app-host
+  - name: dest_invoices
+    parameters:
+      service-plan: lite 
+      service: destination  
+    type: org.cloudfoundry.managed-service             
+parameters:
+  deploy_mode: html5-repo

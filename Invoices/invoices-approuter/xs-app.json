@@ -1,4 +1,22 @@
 {
-  "authenticationMethod": "none",
-  "routes": []
+    "welcomeFile": "/index.html",
+    "authenticationMethod": "none",
+    "logout": {
+        "logoutendpoint": "do/logout"
+    },
+    "routes": [
+        {
+            "authenticationtype": "none",
+            "source": "^/V2/(.*)$",
+            "destination": "Northwind",
+            "csrfProtecion": false,
+            "target": "$1"
+        }, 
+        {
+            "authenticationtype": "none",
+            "source": "^(.*)$",
+            "service": "html5-apps-repo-rt", 
+            "target": "$1"
+        }
+    ]
 }

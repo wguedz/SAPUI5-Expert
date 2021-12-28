@@ -7,7 +7,7 @@ sap.ui.define([
     "use strict";
 
     var oMockServer,
-        _sAppPath = "logaligroup.sapui5/",
+        _sAppPath = "logaligroup/sapui5/",
         _sJsonFilesPath = _sAppPath + "localService/mockdata";
 
     var oMockServerInterface = {
@@ -22,19 +22,23 @@ sap.ui.define([
          */
         init: function (oOptionsParameter) {
             var oOptions = oOptionsParameter || {};
-
+//debugger;
             return new Promise(function (fnResolve, fnReject) {
                 var sManifestUrl = sap.ui.require.toUrl(_sAppPath + "manifest.json"),
                     oManifestModel = new JSONModel(sManifestUrl);
 
                 oManifestModel.attachRequestCompleted(function () {
-                    var oUriParameters = new UriParameters(window.location.href),
-                        // parse manifest for local metatadata URI
-                        sJsonFilesUrl = sap.ui.require.toUrl(_sJsonFilesPath),
-                        oMainDataSource = oManifestModel.getProperty("/sap.app/dataSources/mainService"),
-                        sMetadataUrl = sap.ui.require.toUrl(_sAppPath + oMainDataSource.settings.localUri),
-                        // ensure there is a trailing slash
-                        sMockServerUrl = oMainDataSource.uri && new URI(oMainDataSource.uri).absoluteTo(sap.ui.require.toUrl(_sAppPath)).toString();
+
+                    var oUriParameters = new UriParameters(window.location.href);
+
+                    //Parse manifest for local metadata uri
+                    var sJsonFilesUrl = sap.ui.require.toUrl(_sJsonFilesPath);
+                    var oMainDataSource = oManifestModel.getProperty("/sap.app/dataSources/mainService");
+                    var sMetadataUrl = sap.ui.require.toUrl(_sAppPath + oMainDataSource.settings.localUri);
+
+
+                    // ensure there is a trailing slash
+                    var sMockServerUrl = oMainDataSource.uri && new URI(oMainDataSource.uri).absoluteTo(sap.ui.require.toUrl(_sAppPath)).toString();
 
                     // create a mock server instance or stop the existing one to reinitialize
                     if (!oMockServer) {
@@ -44,13 +48,13 @@ sap.ui.define([
                     } else {
                         oMockServer.stop();
                     }
-
+                    /*
                     // configure mock server with the given options or a default delay of 0.5s
                     MockServer.config({
                         autoRespond: true,
-                        autoRespondAfter: (oOptions.delay || oUriParameters.get("serverDelay") || 500)
+                        autoRespondAfter: (oOptionsParameter.delay || oUriParameters.get("serverDelay") || 500)
                     });
-
+*/
                     // simulate all requests using mock data
                     oMockServer.simulate(sMetadataUrl, {
                         sMockdataBaseUrl: sJsonFilesUrl,
