@@ -6,16 +6,19 @@
     displayBlock="true" >
         <Panel  headerText="{i18n>HelloPanel}" 
                 class="sapUiResponsiveMargin" 
-                width="auto" >
+                width="auto" 
+                expandable="{device>/system/phone}"
+                expanded="{= !${device>/system/phone} }">
             <content>
                 <Button id = "helloDialogButton"
                         text="{i18n>HelloDialogBut}" 
                         press=".openDialog" 
-                        class="sapUiSmallMarginEnd"
-                        icon="sap-icon://action" />            
+                        class="sapUiSmallMarginEnd sapUiVisibleOnlyOnDesktop"
+                        icon="sap-icon://action" 
+                         />            
                 <Button text="{i18n>showHelloButtonText}" 
                         press=".onShowHellow" 
-                        class="sapUiSmallMarginEnd" />
+                        class="sapUiSmallMarginEnd sapUiHideOnDesktop" />
                 <Input  value="{/recipient/name}" 
                         valueLiveUpdate="true"
                         width="60%" />

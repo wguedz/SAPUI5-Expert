@@ -6,7 +6,8 @@
     displayBlock="true"
     xmlns="sap.m" >
 		<Page title="{i18n>detailPageTitle}" showNavButton="true" navButtonPress=".onNavBack">
-        <ObjectHeader title="{northwind>Quantity} x {northwind>ProductName}">
+        <ObjectHeader title="{northwind>Quantity} x {northwind>ProductName}"
+            >
             <attributes>
                 <ObjectAttribute text="{northwind>ShipName}"/>
                 <ObjectAttribute text="{northwind>ShipAddress}"/>

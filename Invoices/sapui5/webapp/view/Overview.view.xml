@@ -5,6 +5,16 @@
     displayBlock="true"
     xmlns="sap.m" >
 			<Page id="page" title="{i18n>title}">
+            <landmarkInfo>
+            <PageAccessibleLandmarkInfo 
+            rootRole="Region"
+            rootLabel="{i18n>overviewRootLabel}"
+            contentLabel="{i18n>overviewContentLabel}"
+            contentRole="Main"
+            headerRole="Banner"
+            headerLabel="{i18n>overviewHeaderLabel}" 
+            /> 
+            </landmarkInfo>
 				<content>
                     <mvc:XMLView viewName="logaligroup.sapui5.view.HelloPanel"/>
                     <mvc:XMLView viewName="logaligroup.sapui5.view.InvoicesList"/>
